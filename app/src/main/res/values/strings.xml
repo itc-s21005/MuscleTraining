@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MuscleTraining</string>
+    <string name="MuscleTraining">Let\'s Training</string>
+    <string name="StartButton">開始</string>
+</resources>
