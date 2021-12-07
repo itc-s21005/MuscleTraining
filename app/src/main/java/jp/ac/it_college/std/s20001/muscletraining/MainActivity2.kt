@@ -7,7 +7,7 @@ import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMain2Bindi
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMainBinding
 
 class MainActivity2 : AppCompatActivity() {
-    private lateinit var binding : ActivityMain2Binding
+    private lateinit var binding: ActivityMain2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
@@ -23,4 +23,5 @@ class MainActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }
