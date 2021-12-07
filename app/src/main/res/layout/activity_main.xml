@@ -21,15 +21,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.082" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/startButton"
-        android:layout_width="311dp"
-        android:layout_height="93dp"
-        android:layout_marginBottom="68dp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="72dp"
         android:text="@string/StartButton"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textSize="34sp"
+        app:backgroundTint="?android:attr/textColorHighlightInverse"
+        app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8053528" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
