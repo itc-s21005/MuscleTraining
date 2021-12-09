@@ -9,11 +9,13 @@
 
     <TextView
         android:id="@+id/Title"
-        android:layout_width="315dp"
+        android:layout_width="0dp"
         android:layout_height="65dp"
         android:text="@string/MuscleTraining"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="48sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.604"
