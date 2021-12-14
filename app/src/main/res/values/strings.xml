@@ -2,7 +2,7 @@
     <string name="app_name">MuscleTraining</string>
     <string name="MuscleTraining">Let\'s Training</string>
     <string name="StartButton">開始</string>
-    <string name="Level">難易度を選択してね</string>
+    <string name="Level">難易度を選択してください</string>
     <string name="firstButton">初級</string>
     <string name="secondButton">中級〜上級</string>
 </resources>
