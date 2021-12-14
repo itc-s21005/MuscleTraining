@@ -27,8 +27,8 @@ class MainActivity3 : AppCompatActivity() {
         muscleList.adapter = adapter
         //muscleList.onItemClickListener = ListItemClickListener()
         muscleList.setOnItemClickListener { parent,view, position, id ->
-            Toast.makeText(this, "${_list[position]}", Toast.LENGTH_LONG).show()
-            //startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+
+            startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
         }
 
     }
