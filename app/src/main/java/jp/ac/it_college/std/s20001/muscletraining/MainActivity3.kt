@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import android.widget.Toast
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMain3Binding
 
 class MainActivity3 : AppCompatActivity() {
@@ -24,7 +25,11 @@ class MainActivity3 : AppCompatActivity() {
         val to = intArrayOf(android.R.id.text1)
         val adapter = SimpleAdapter(this@MainActivity3, _list, android.R.layout.simple_list_item_1, from, to)
         muscleList.adapter = adapter
-        muscleList.onItemClickListener = ListItemClickListener()
+        //muscleList.onItemClickListener = ListItemClickListener()
+        muscleList.setOnItemClickListener { parent,view, position, id ->
+
+            startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+        }
 
     }
     private fun createList(): MutableList<MutableMap<String, String>> {

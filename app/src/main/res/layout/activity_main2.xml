@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/secondButton"
-        android:layout_width="395dp"
-        android:layout_height="152dp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/secondButton"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.738" />
+        app:backgroundTint="@color/design_default_color_secondary_variant"
+        app:cornerRadius="40dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/firstButton" />
 
     <TextView
         android:id="@+id/textView"
@@ -24,20 +27,40 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/Level"
-        android:textSize="38sp"
+        android:textColor="@color/black"
+        android:textSize="33sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/firstButton"
-        android:layout_width="395dp"
-        android:layout_height="152dp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/firstButton"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textSize="40sp"
+        app:backgroundTint="@color/design_default_color_secondary_variant"
+        app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.238" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
 </androidx.constraintlayout.widget.ConstraintLayout>
