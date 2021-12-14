@@ -28,7 +28,7 @@ class MainActivity3 : AppCompatActivity() {
         //muscleList.onItemClickListener = ListItemClickListener()
         muscleList.setOnItemClickListener { parent,view, position, id ->
 
-            startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+            startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
         }
 
     }
