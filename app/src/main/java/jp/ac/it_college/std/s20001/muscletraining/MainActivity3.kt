@@ -45,13 +45,13 @@ class MainActivity3 : AppCompatActivity() {
     private inner class ListItemClickListener: AdapterView.OnItemClickListener {
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
             if (position == 0) {
-                val a1 = startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+                val a1 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
             } else if (position == 1) {
-                val a2 = startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+                val a2 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
             } else if (position == 2) {
-                val a3 = startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+                val a3 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
             } else if (position == 3) {
-                val a4 = startActivity(Intent(this@MainActivity3, MainActivity2:: class.java))
+                val a4 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
             }
         }
     }
