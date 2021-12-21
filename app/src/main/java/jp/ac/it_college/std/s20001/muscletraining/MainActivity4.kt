@@ -1,10 +1,8 @@
 package jp.ac.it_college.std.s20001.muscletraining
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
+import android.util.Log
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMain4Binding
 
 class MainActivity4 : AppCompatActivity() {
@@ -14,16 +12,20 @@ class MainActivity4 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.contentsText.text = """
-        1.背筋を伸ばしてまっすぐ立つ。
-        
-        2.片足を1.5〜2歩分ほど前に出す。
-        
-        3.膝が90度になるまで、上体を下げる。
-         
-        4.前足のかかとで地面を蹴るようにして、元の位置に戻る。
-        
-        5.左右各10回X3セットが目安""".trimIndent()
+        val description = intent.getStringArrayListExtra("description")
+        var text = ""
+
+        Log.d("Main4", "description = $description")
+
+        for(i in 0 until description!!.size){
+            text += when(i){
+                description.size - 1 -> "${i + 1}.${description[i]}"
+                else -> "${i + 1}.${description[i]}\n\n"
+            }
+
+        }
+
+        binding.contentsText.text = text
     }
     
 }

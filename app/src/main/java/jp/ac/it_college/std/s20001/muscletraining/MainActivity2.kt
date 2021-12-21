@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMain2Binding
-import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMainBinding
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
@@ -14,14 +13,19 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.firstButton.setOnClickListener {
+            val lv = "elementary"
             val intent = Intent(this, MainActivity3::class.java)
+            intent.putExtra("level", lv)
             startActivity(intent)
+            finish()
         }
 
         binding.secondButton.setOnClickListener {
-
+            val lv = "intermediate"
             val intent = Intent(this, MainActivity3::class.java)
+            intent.putExtra("level", lv)
             startActivity(intent)
+            finish()
 
         }
     }
