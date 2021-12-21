@@ -1,13 +1,8 @@
 package jp.ac.it_college.std.s20001.muscletraining
 
-import android.content.Intent
-import android.nfc.NfcAdapter.EXTRA_DATA
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Intents.Insert.DATA
-import android.provider.SyncStateContract.Columns.DATA
-import android.view.View
-import android.widget.AdapterView
+import android.util.Log
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMain4Binding
 
 class MainActivity4 : AppCompatActivity() {
@@ -17,8 +12,20 @@ class MainActivity4 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        val description = intent.getStringArrayListExtra("description")
+        var text = ""
 
+        Log.d("Main4", "description = $description")
 
+        for(i in 0 until description!!.size){
+            text += when(i){
+                description.size - 1 -> "${i + 1}.${description[i]}"
+                else -> "${i + 1}.${description[i]}\n\n"
+            }
+
+        }
+
+        binding.contentsText.text = text
     }
     
 }
