@@ -1,6 +1,7 @@
 package jp.ac.it_college.std.s20001.muscletraining
 
 import android.content.Intent
+import android.nfc.NfcAdapter.EXTRA_DATA
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -50,9 +51,11 @@ class MainActivity3 : AppCompatActivity() {
     private inner class ListItemClickListener: AdapterView.OnItemClickListener {
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
             if (position == 0) {
-                val a1 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
+                val intent = Intent(this@MainActivity3, MainActivity4:: class.java)
+                startActivity(intent)
             } else if (position == 1) {
-                val a2 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
+                val intent = Intent(this@MainActivity3, MainActivity4:: class.java)
+                startActivity(intent)
             } else if (position == 2) {
                 val a3 = startActivity(Intent(this@MainActivity3, MainActivity4:: class.java))
             } else if (position == 3) {
