@@ -21,20 +21,20 @@ class MainActivity3 : AppCompatActivity() {
 
         val level = intent!!.getStringExtra("level").toString()
 
-        //_list = createList()
-        getMenuList(level)
+        createMenuList(level)
 
         val muscleList = findViewById<ListView>(R.id.muscleList)
         val from = arrayOf("name")
         val to = intArrayOf(android.R.id.text1)
         val adapter = SimpleAdapter(this@MainActivity3, _list, android.R.layout.simple_list_item_1, from, to)
         muscleList.adapter = adapter
-        //muscleList.onItemClickListener = ListItemClickListener()
         muscleList.setOnItemClickListener { _,_, position, _ ->
+
             val description = arrayListOf<String>()
-            for(i in 0 until descriptions[position].length()){
+            for(i in 0 until descriptions[position].length()) {
                 description.add(descriptions[position][i].toString())
             }
+
             Log.d("Main3", "description = $description")
             val intent = Intent(this@MainActivity3, MainActivity4::class.java)
             intent.putStringArrayListExtra("description", description)
@@ -45,7 +45,7 @@ class MainActivity3 : AppCompatActivity() {
     }
 
 
-    private fun getMenuList(level: String) {
+    private fun createMenuList(level: String) {
         val assetManager = resources.assets
         val inputStream = assetManager.open("menu.json")
         val jsonString = inputStream.bufferedReader().use { it.readText() }
@@ -61,6 +61,7 @@ class MainActivity3 : AppCompatActivity() {
             _list.add(mutableMapOf(
                 "name" to obj.getString("name")
             ))
+
             val description = obj.getJSONArray("description")
 
             descriptions.add(description)
