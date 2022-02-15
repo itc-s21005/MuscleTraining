@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MuscleTraining">
         <activity
+            android:name=".RecordActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity4"
             android:exported="false" />
         <activity
