@@ -7,6 +7,23 @@
     android:background="@drawable/mussle"
     tools:context=".MainActivity">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/managementButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="68dp"
+        android:text="@string/managementButton"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:textSize="34sp"
+        app:backgroundTint="?android:attr/colorPressedHighlight"
+        app:cornerRadius="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
     <TextView
         android:id="@+id/Title"
         android:layout_width="0dp"
@@ -29,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="236dp"
         android:text="@string/StartButton"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textSize="34sp"
@@ -37,6 +54,7 @@
         app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
