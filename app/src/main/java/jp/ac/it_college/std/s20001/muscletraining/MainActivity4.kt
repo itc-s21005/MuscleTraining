@@ -13,6 +13,7 @@ class MainActivity4 : AppCompatActivity() {
         setContentView(binding.root)
 
         val description = intent.getStringArrayListExtra("description")
+        val image = intent.getStringExtra("image")
         var text = ""
 
         Log.d("Main4", "description = $description")
@@ -25,7 +26,15 @@ class MainActivity4 : AppCompatActivity() {
 
         }
 
+        val resource = this@MainActivity4.resources
+        val resourceId = resource.getIdentifier(
+            image,
+            "drawable",
+            this@MainActivity4.packageName
+        )
+
         binding.contentsText.text = text
+        binding.trainingImage.setImageResource(resourceId)
     }
     
 }

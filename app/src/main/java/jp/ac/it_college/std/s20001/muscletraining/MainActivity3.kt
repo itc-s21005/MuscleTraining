@@ -14,6 +14,7 @@ class MainActivity3 : AppCompatActivity() {
     private lateinit var binding : ActivityMain3Binding
     private val _list: MutableList<MutableMap<String, String>> = mutableListOf()
     private val descriptions: ArrayList<JSONArray> = arrayListOf()
+    private val images: ArrayList<String> = arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain3Binding.inflate(layoutInflater)
@@ -31,14 +32,17 @@ class MainActivity3 : AppCompatActivity() {
         muscleList.setOnItemClickListener { _,_, position, _ ->
 
             val description = arrayListOf<String>()
+            val image = images[position]
             for(i in 0 until descriptions[position].length()) {
                 description.add(descriptions[position][i].toString())
             }
 
             Log.d("Main3", "description = $description")
-            val intent = Intent(this@MainActivity3, MainActivity4::class.java)
-            intent.putStringArrayListExtra("description", description)
-            startActivity(intent)
+            Log.d("Main3", "image = $image")
+            val MainActivity4 = Intent(this@MainActivity3, MainActivity4::class.java)
+            MainActivity4.putStringArrayListExtra("description", description)
+            MainActivity4.putExtra("image", image)
+            startActivity(MainActivity4)
 
         }
 
@@ -65,6 +69,7 @@ class MainActivity3 : AppCompatActivity() {
             val description = obj.getJSONArray("description")
 
             descriptions.add(description)
+            images.add(obj.getString("image"))
             Log.d("MainActivity3", "description = ${description[0]}")
 
         }
