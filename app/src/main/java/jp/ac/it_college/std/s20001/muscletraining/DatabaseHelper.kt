@@ -16,7 +16,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         val sb = """
             CREATE TABLE record (
             menu TEXT,
-            
+            date TEXT
             )
         """.trimIndent()
 
