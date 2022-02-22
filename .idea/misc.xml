@@ -7,6 +7,8 @@
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.16793313069908813" />
         <entry key="app/src/main/res/layout/activity_main3.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/layout/activity_main4.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_record.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/row.xml" value="0.5" />
       </map>
     </option>
   </component>
