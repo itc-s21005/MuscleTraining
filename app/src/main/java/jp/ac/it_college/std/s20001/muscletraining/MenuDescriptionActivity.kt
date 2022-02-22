@@ -3,14 +3,18 @@ package jp.ac.it_college.std.s20001.muscletraining
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMain4Binding
+import android.view.MenuItem
+import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMenuDescriptionBinding
 
-class MainActivity4 : AppCompatActivity() {
-    private lateinit var binding: ActivityMain4Binding
+class MenuDescriptionActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMenuDescriptionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityMain4Binding.inflate(layoutInflater)
+        binding = ActivityMenuDescriptionBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.descToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val description = intent.getStringArrayListExtra("description")
         val image = intent.getStringExtra("image")
@@ -26,15 +30,27 @@ class MainActivity4 : AppCompatActivity() {
 
         }
 
-        val resource = this@MainActivity4.resources
+        val resource = this@MenuDescriptionActivity.resources
         val resourceId = resource.getIdentifier(
             image,
             "drawable",
-            this@MainActivity4.packageName
+            this@MenuDescriptionActivity.packageName
         )
 
         binding.contentsText.text = text
         binding.trainingImage.setImageResource(resourceId)
     }
-    
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var returnVal = true
+
+        if(item.itemId == android.R.id.home){
+            finish()
+        }else {
+            returnVal = super.onOptionsItemSelected(item)
+        }
+
+        return returnVal
+    }
+
 }

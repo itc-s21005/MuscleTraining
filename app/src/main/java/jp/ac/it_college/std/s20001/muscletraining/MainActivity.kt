@@ -13,15 +13,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.startButton.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, SelectActivity::class.java)
             startActivity(intent)
-            finish()
+            //finish()
         }
 
-        binding.managementButton.setOnClickListener{
+        binding.managementButton.setOnClickListener {
             val recordActivity = Intent(this, RecordActivity::class.java)
             startActivity(recordActivity)
-            finish()
+            //finish()
         }
+
+        val actionBar = supportActionBar
+        actionBar?.hide()
+
     }
 }

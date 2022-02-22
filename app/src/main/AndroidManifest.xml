@@ -10,17 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MuscleTraining">
         <activity
+            android:name=".MenuDescriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity4"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity3"
-            android:parentActivityName=".MainActivity4"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

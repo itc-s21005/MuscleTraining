@@ -3,6 +3,7 @@ package jp.ac.it_college.std.s20001.muscletraining
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityRecordBinding
 
@@ -16,6 +17,9 @@ class RecordActivity : AppCompatActivity() {
         binding = ActivityRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.recordToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         Log.d("RecordActivity", "onCreate RecordActivity")
 
         Log.d("RecordActivity", "records = ${selectDb()}")
@@ -28,12 +32,24 @@ class RecordActivity : AppCompatActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var returnVal = true
+
+        if(item.itemId == android.R.id.home){
+            finish()
+        }else{
+            returnVal = super.onOptionsItemSelected(item)
+        }
+
+        return returnVal
+    }
+
     private fun selectDb(): MutableList<MutableMap<String, String>>{
 
         val records: MutableList<MutableMap<String, String>> = mutableListOf()
         val db = helper.readableDatabase
         val sqlCount = "SELECT COUNT(*) AS count FROM record"
-        val sqlSelect = "SELECT *  FROM record"
+        val sqlSelect = "SELECT menu, date(date) AS date  FROM record ORDER BY date DESC"
         val cursor = db.rawQuery(sqlSelect, null)
 
 
