@@ -17,5 +17,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.managementButton.setOnClickListener{
+            val recordActivity = Intent(this, RecordActivity::class.java)
+            startActivity(recordActivity)
+            finish()
+        }
     }
 }
