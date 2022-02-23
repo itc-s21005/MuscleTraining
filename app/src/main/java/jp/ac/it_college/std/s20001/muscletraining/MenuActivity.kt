@@ -17,18 +17,22 @@ import kotlin.collections.ArrayList
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
 
-    private val _list: MutableList<MutableMap<String, String>> = mutableListOf()
-    private val descriptions: ArrayList<JSONArray> = arrayListOf()
-    private val images: ArrayList<String> = arrayListOf()
+
+    private lateinit var _list: MutableList<MutableMap<String, String>>
+    private lateinit var descriptions: ArrayList<JSONArray>
+    private lateinit var images: ArrayList<String>
     private val helper = DatabaseHelper(this@MenuActivity)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val level = intent!!.getStringExtra("level").toString()
 
-        createMenuList(level)
+        val level = intent!!.getStringExtra("level").toString()
+        val menu = Menu(level, applicationContext)
+        _list = menu.getMenuList()
+        descriptions = menu.getDescriptions()
+        images = menu.getImages()
 
         setSupportActionBar(binding.menuToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -71,32 +75,6 @@ class MenuActivity : AppCompatActivity() {
         }
 
         return returnVal
-    }
-
-    private fun createMenuList(level: String) {
-        val assetManager = resources.assets
-        val inputStream = assetManager.open("menu.json")
-        val jsonString = inputStream.bufferedReader().use { it.readText() }
-
-        val rootJson = JSONObject(jsonString)
-        val menu = rootJson.getJSONArray(level)
-
-        Log.d("MainActivity3", "menuSize = ${menu.length()}")
-
-        for(i in 0 until menu.length()){
-            val obj = menu.getJSONObject(i)
-
-            _list.add(mutableMapOf(
-                "name" to obj.getString("name")
-            ))
-
-            val description = obj.getJSONArray("description")
-
-            descriptions.add(description)
-            images.add(obj.getString("image"))
-            Log.d("MainActivity3", "description = ${description[0]}")
-
-        }
     }
 
     private fun insertSpl(menu: String){
