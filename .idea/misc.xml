@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/activity_menu_description.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_select.xml" value="0.103596757852077" />
+        <entry key="app/src/main/res/layout/fragment_norecord.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row.xml" value="0.5" />
       </map>
     </option>

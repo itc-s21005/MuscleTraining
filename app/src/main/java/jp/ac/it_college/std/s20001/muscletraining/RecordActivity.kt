@@ -11,25 +11,41 @@ class RecordActivity : AppCompatActivity() {
     private val helper = DatabaseHelper(this@RecordActivity)
     private lateinit var binding: ActivityRecordBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("RecordActivity", "onCreate RecordActivity")
         binding = ActivityRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.recordToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        Log.d("RecordActivity", "onCreate RecordActivity")
+        val records = selectDb()
 
-        Log.d("RecordActivity", "records = ${selectDb()}")
-        val adapter = RecyclerAdapter(selectDb())
-        val manager = LinearLayoutManager(this@RecordActivity)
-        binding.records.let {
-            it.adapter = adapter
-            manager.orientation = LinearLayoutManager.VERTICAL
-            it.layoutManager = manager
+        if(savedInstanceState == null){
+            if(records.size == 0){
+                val messageFragment = MessageFragment()
+                val fragmentManager = supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+
+                fragmentTransaction.addToBackStack(null)
+
+                fragmentTransaction.replace(R.id.container,
+                    messageFragment.newInstance(),
+                )
+                fragmentTransaction.commit()
+            } else {
+                Log.d("RecordActivity", "records = ${selectDb()}")
+                val adapter = RecyclerAdapter(records)
+                val manager = LinearLayoutManager(this@RecordActivity)
+                binding.records.let {
+                    it.adapter = adapter
+                    manager.orientation = LinearLayoutManager.VERTICAL
+                    it.layoutManager = manager
+                }
+            }
         }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
