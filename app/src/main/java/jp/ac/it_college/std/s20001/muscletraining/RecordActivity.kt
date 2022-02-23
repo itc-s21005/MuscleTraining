@@ -24,14 +24,13 @@ class RecordActivity : AppCompatActivity() {
 
         if(savedInstanceState == null){
             if(records.size == 0){
-                val messageFragment = MessageFragment()
                 val fragmentManager = supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
 
                 fragmentTransaction.addToBackStack(null)
 
                 fragmentTransaction.replace(R.id.container,
-                    messageFragment.newInstance(),
+                    MessageFragment.newInstance(),
                 )
                 fragmentTransaction.commit()
             } else {

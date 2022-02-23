@@ -16,9 +16,8 @@ class RecyclerAdapter(private val record: MutableList<MutableMap<String, String>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row, parent, false)
-        val holder = ViewHolder(view)
 
-        return holder
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

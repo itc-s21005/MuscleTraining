@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 
 class MessageFragment: Fragment() {
 
-    fun newInstance(): MessageFragment{
-        val fragment = MessageFragment()
-
-        return fragment
+    companion object{
+        fun newInstance(): MessageFragment{
+            return MessageFragment()
+        }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
