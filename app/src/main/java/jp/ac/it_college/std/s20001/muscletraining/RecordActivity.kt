@@ -29,7 +29,7 @@ class RecordActivity : AppCompatActivity() {
 
                 fragmentTransaction.addToBackStack(null)
 
-                fragmentTransaction.replace(R.id.container,
+                fragmentTransaction.replace(R.id.dec_container,
                     MessageFragment.newInstance(),
                 )
                 fragmentTransaction.commit()

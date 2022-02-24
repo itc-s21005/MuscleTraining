@@ -17,10 +17,10 @@ class MenuDescriptionActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val description = intent.getStringArrayListExtra("description")
-        val image = intent.getStringExtra("image")
+        val image = intent.getStringExtra("image").toString()
         var text = ""
-
-        Log.d("Main4", "description = $description")
+        val entity = intent
+            .getParcelableArrayListExtra<MenuEntity>("Entity") as ArrayList<MenuEntity>
 
         for(i in 0 until description!!.size){
             text += when(i){
@@ -30,15 +30,30 @@ class MenuDescriptionActivity : AppCompatActivity() {
 
         }
 
-        val resource = this@MenuDescriptionActivity.resources
+        /*val resource = this@MenuDescriptionActivity.resources
         val resourceId = resource.getIdentifier(
             image,
             "drawable",
             this@MenuDescriptionActivity.packageName
-        )
+        )*/
+
+        //Log.d("Main4", "description = $description")
+
+        if(savedInstanceState == null){
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+
+            fragmentTransaction.replace(R.id.dec_container, DecFragment.newInstance(
+                entity,
+                applicationContext
+            ))
+            fragmentTransaction.commit()
+        }
+
+        /*
 
         binding.contentsText.text = text
-        binding.trainingImage.setImageResource(resourceId)
+        binding.trainingImage.setImageResource(resourceId)*/
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

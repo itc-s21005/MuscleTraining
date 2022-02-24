@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/record_toolbar" />
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/dec_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

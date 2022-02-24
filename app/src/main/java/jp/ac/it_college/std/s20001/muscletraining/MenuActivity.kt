@@ -21,6 +21,7 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var _list: MutableList<MutableMap<String, String>>
     private lateinit var descriptions: ArrayList<JSONArray>
     private lateinit var images: ArrayList<String>
+    private lateinit var menuEntityList: ArrayList<MenuEntity>
     private val helper = DatabaseHelper(this@MenuActivity)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,7 @@ class MenuActivity : AppCompatActivity() {
         _list = menu.getMenuList()
         descriptions = menu.getDescriptions()
         images = menu.getImages()
+        menuEntityList = menu.getMenuEntityList()
 
         setSupportActionBar(binding.menuToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -47,6 +49,7 @@ class MenuActivity : AppCompatActivity() {
             val name = _list[position]["name"].toString()
             val description = arrayListOf<String>()
             val image = images[position]
+            val entity = arrayListOf<MenuEntity>(menuEntityList[position])
             for(i in 0 until descriptions[position].length()) {
                 description.add(descriptions[position][i].toString())
             }
@@ -59,6 +62,7 @@ class MenuActivity : AppCompatActivity() {
             val intent = Intent(this@MenuActivity, MenuDescriptionActivity::class.java)
             intent.putStringArrayListExtra("description", description)
             intent.putExtra("image", image)
+            intent.putParcelableArrayListExtra("Entity", entity)
             startActivity(intent)
 
         }
