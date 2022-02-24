@@ -38,6 +38,7 @@ class DecFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("Dec", "StartDecFragment")
         val image = view.findViewById<ImageView>(R.id.training_image)
         val text = view.findViewById<TextView>(R.id.fragmentContentsText)
 

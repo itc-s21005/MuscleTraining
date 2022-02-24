@@ -20,8 +20,8 @@ class AllDecFragment: Fragment() {
         @SuppressLint("StaticFieldLeak")
         lateinit var activity: Context
 
-        fun newInstance(menuList: ArrayList<MenuEntity>, app: Context): DecFragment{
-            val fragment = DecFragment()
+        fun newInstance(menuList: ArrayList<MenuEntity>, app: Context): AllDecFragment{
+            val fragment = AllDecFragment()
             val bundle = Bundle()
             bundle.putParcelableArrayList("Entity", menuList)
             fragment.arguments = bundle
@@ -41,6 +41,7 @@ class AllDecFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("AllDec", "StartAllDecFragment")
         startTraining(view)
     }
 
@@ -54,6 +55,7 @@ class AllDecFragment: Fragment() {
 
         val bundle = arguments
         val dec = bundle?.getParcelableArrayList<MenuEntity>("Entity")
+        Log.d("AllDec", "dec = $dec")
         if(bundle != null){
 
             //リソースIDを取得
@@ -87,7 +89,9 @@ class AllDecFragment: Fragment() {
         }
 
         //終了ボタンの処理
-        finish.setOnClickListener {  }
+        finish.setOnClickListener {
+            activity?.finish()
+        }
 
 
     }

@@ -55,8 +55,22 @@ class MenuActivity : AppCompatActivity() {
             //MenuDescriptionActivityにデータを送る
             val intent = Intent(this@MenuActivity, MenuDescriptionActivity::class.java)
             intent.putParcelableArrayListExtra("Entity", entity)
+            intent.putExtra("ms", 1)
             startActivity(intent)
 
+        }
+
+        binding.allTraining.setOnClickListener {
+            val intent = Intent(this@MenuActivity, MenuDescriptionActivity::class.java)
+            intent.putParcelableArrayListExtra("Entity", menuEntityList)
+            intent.putExtra("ms", 0)
+            val ja = when(level){
+                "elementary" -> "初級"
+                "intermediate" -> "中級~上級"
+                else -> ""
+            }
+            insertSpl("すべてのメニュー: $ja")
+            startActivity(intent)
         }
 
     }
