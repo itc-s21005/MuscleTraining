@@ -8,8 +8,6 @@ import android.view.MenuItem
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import jp.ac.it_college.std.s20001.muscletraining.databinding.ActivityMenuBinding
-import org.json.JSONArray
-import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -19,8 +17,6 @@ class MenuActivity : AppCompatActivity() {
 
 
     private lateinit var _list: MutableList<MutableMap<String, String>>
-    private lateinit var descriptions: ArrayList<JSONArray>
-    private lateinit var images: ArrayList<String>
     private lateinit var menuEntityList: ArrayList<MenuEntity>
     private val helper = DatabaseHelper(this@MenuActivity)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,17 +24,19 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        //SelectActivityからのintent
         val level = intent!!.getStringExtra("level").toString()
+
+        //Menuクラスからデータを受け取る
         val menu = Menu(level, applicationContext)
         _list = menu.getMenuList()
-        descriptions = menu.getDescriptions()
-        images = menu.getImages()
         menuEntityList = menu.getMenuEntityList()
 
+        //ツールバーの設定
         setSupportActionBar(binding.menuToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        //リストビューの設定・表示
         val muscleList = findViewById<ListView>(R.id.muscleList)
         val from = arrayOf("name")
         val to = intArrayOf(android.R.id.text1)
@@ -47,21 +45,15 @@ class MenuActivity : AppCompatActivity() {
         muscleList.setOnItemClickListener { _,_, position, _ ->
 
             val name = _list[position]["name"].toString()
-            val description = arrayListOf<String>()
-            val image = images[position]
             val entity = arrayListOf<MenuEntity>(menuEntityList[position])
-            for(i in 0 until descriptions[position].length()) {
-                description.add(descriptions[position][i].toString())
-            }
 
+            //押された項目をデータベースに記録
             insertSpl(name)
-
             Log.d("Main3", "name = $name")
-            Log.d("Main3", "description = $description")
-            Log.d("Main3", "image = $image")
+
+
+            //MenuDescriptionActivityにデータを送る
             val intent = Intent(this@MenuActivity, MenuDescriptionActivity::class.java)
-            intent.putStringArrayListExtra("description", description)
-            intent.putExtra("image", image)
             intent.putParcelableArrayListExtra("Entity", entity)
             startActivity(intent)
 
@@ -69,6 +61,7 @@ class MenuActivity : AppCompatActivity() {
 
     }
 
+    //ツールバーの設定
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var returnVal = true
 
@@ -81,6 +74,7 @@ class MenuActivity : AppCompatActivity() {
         return returnVal
     }
 
+    //データベースに追加する処理
     private fun insertSpl(menu: String){
         Log.d("MainActivity3", "start insertSpl")
         val db = helper.writableDatabase
@@ -93,6 +87,7 @@ class MenuActivity : AppCompatActivity() {
         stmt.executeInsert()
     }
 
+    //今日の日付を取得
     private fun getDate():String{
         val date = Date()
         val df = SimpleDateFormat("yyyy-MM-dd")

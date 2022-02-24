@@ -12,18 +12,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //SelectActivityに遷移
         binding.startButton.setOnClickListener {
             val intent = Intent(this, SelectActivity::class.java)
             startActivity(intent)
             //finish()
         }
 
+        //RecordActivityに遷移
         binding.managementButton.setOnClickListener {
             val recordActivity = Intent(this, RecordActivity::class.java)
             startActivity(recordActivity)
             //finish()
         }
 
+        //アクションバーを非表示にする処理
         val actionBar = supportActionBar
         actionBar?.hide()
 

@@ -17,13 +17,15 @@ class RecordActivity : AppCompatActivity() {
         binding = ActivityRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //ツールバーの表示
         setSupportActionBar(binding.recordToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val records = selectDb()
 
+        //フラグメントの表示
         if(savedInstanceState == null){
-            if(records.size == 0){
+            if(records.size == 0){  //データベースにデータがなかったらフラグメントを表示
                 val fragmentManager = supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
 
@@ -47,6 +49,7 @@ class RecordActivity : AppCompatActivity() {
 
     }
 
+    //ツールバーの設定
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var returnVal = true
 
@@ -59,22 +62,13 @@ class RecordActivity : AppCompatActivity() {
         return returnVal
     }
 
+    //データベースからデータを取得
     private fun selectDb(): MutableList<MutableMap<String, String>>{
 
         val records: MutableList<MutableMap<String, String>> = mutableListOf()
         val db = helper.readableDatabase
-        val sqlCount = "SELECT COUNT(*) AS count FROM record"
         val sqlSelect = "SELECT menu, date(date) AS date  FROM record ORDER BY date DESC"
         val cursor = db.rawQuery(sqlSelect, null)
-
-
-        /*if(cursor.moveToFirst()){
-            cursor.let {
-                val count = it.getColumnIndex("count").toInt()
-                Log.d("RecordActivity", "count = ${count}")
-            }
-            cursor.close()
-        }*/
 
         while(cursor.moveToNext()) {
             cursor.let {

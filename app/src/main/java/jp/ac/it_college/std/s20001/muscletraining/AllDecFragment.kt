@@ -16,11 +16,6 @@ class AllDecFragment: Fragment() {
 
     private var count = 0
     companion object{
-        val test = arrayListOf<MenuEntity>(
-            MenuEntity(
-                name = "aaaaaa", description = "bbbbb", images = "llkajds"
-            )
-        )
 
         @SuppressLint("StaticFieldLeak")
         lateinit var activity: Context
@@ -28,7 +23,7 @@ class AllDecFragment: Fragment() {
         fun newInstance(menuList: ArrayList<MenuEntity>, app: Context): DecFragment{
             val fragment = DecFragment()
             val bundle = Bundle()
-            bundle.putParcelableArrayList("Test", menuList)
+            bundle.putParcelableArrayList("Entity", menuList)
             fragment.arguments = bundle
 
             activity = app
@@ -58,8 +53,10 @@ class AllDecFragment: Fragment() {
 
 
         val bundle = arguments
-        val dec = bundle?.getParcelableArrayList<MenuEntity>("Test")
+        val dec = bundle?.getParcelableArrayList<MenuEntity>("Entity")
         if(bundle != null){
+
+            //リソースIDを取得
             val resource = activity?.resources
             val resourceId = resource?.getIdentifier(
                 dec!![count].images,
@@ -67,23 +64,29 @@ class AllDecFragment: Fragment() {
                 activity?.packageName
             )
 
+            //画像をセット
             if (resourceId != null) {
                 image.setImageResource(resourceId)
             }
+
+            //テキストをセット
             text.text = dec!![count].description
-            Log.d("DecFragment", "text = ${dec!![count].name}")
+            Log.d("DecFragment", "text = ${dec[count].name}")
 
         }
 
+        //次へボタンの処理
         next.setOnClickListener {
             count++
             startTraining(view)
         }
 
+        //次へボタンを非活性にする
         if(count == dec!!.size - 1){
             next.isEnabled = false
         }
 
+        //終了ボタンの処理
         finish.setOnClickListener {  }
 
 

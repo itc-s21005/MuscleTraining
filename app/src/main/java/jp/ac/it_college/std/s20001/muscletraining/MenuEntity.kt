@@ -2,7 +2,6 @@ package jp.ac.it_college.std.s20001.muscletraining
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import org.json.JSONArray
 
 @Parcelize
 data class MenuEntity(

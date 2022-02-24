@@ -14,19 +14,14 @@ import androidx.fragment.app.Fragment
 class DecFragment: Fragment() {
 
     companion object{
-        val test = arrayListOf<MenuEntity>(
-            MenuEntity(
-                name = "aaaaaa", description = "bbbbb", images = "llkajds"
-            )
-        )
 
         @SuppressLint("StaticFieldLeak")
         lateinit var activity: Context
 
         fun newInstance(menuList: ArrayList<MenuEntity>, app:Context): DecFragment{
             val fragment = DecFragment()
-            val bundle =Bundle()
-            bundle.putParcelableArrayList("Test", menuList)
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("Entity", menuList)
             fragment.arguments = bundle
 
             activity = app
@@ -47,20 +42,24 @@ class DecFragment: Fragment() {
         val text = view.findViewById<TextView>(R.id.fragmentContentsText)
 
         val bundle = arguments
-        val dec = bundle?.getParcelableArrayList<MenuEntity>("Test")
+        val dec = bundle?.getParcelableArrayList<MenuEntity>("Entity")
         if(bundle != null){
             val resource = activity?.resources
+            //画層のリソースIDを取得
             val resourceId = resource?.getIdentifier(
                 dec!![0].images,
                 "drawable",
                 activity?.packageName
             )
 
+            //画像をImageViewにセット
             if (resourceId != null) {
                 image.setImageResource(resourceId)
             }
+
+            //テキストを表示
             text.text = dec!![0].description
-            Log.d("DecFragment", "text = ${dec!![0].name}")
+            Log.d("DecFragment", "text = ${dec[0].name}")
 
         }
     }

@@ -1,16 +1,11 @@
 package jp.ac.it_college.std.s20001.muscletraining
 
-import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.collections.ArrayList
 import android.content.Context
-import java.lang.Appendable
-
 
 class Menu(level: String, app: Context) {
     private val _menuList: MutableList<MutableMap<String, String>> = mutableListOf()
-    private val _descriptions: ArrayList<JSONArray> = arrayListOf()
-    private val _images: ArrayList<String> =arrayListOf()
     private val menuEntityList: ArrayList<MenuEntity> = arrayListOf()
 
     init{
@@ -28,9 +23,8 @@ class Menu(level: String, app: Context) {
             ))
 
             val descriptions = obj.getJSONArray("description")
-            _descriptions.add(descriptions)
             var text = ""
-            for(i in 0 until descriptions!!.length()){
+            for(i in 0 until descriptions.length()){
                 text += when(i){
                     descriptions.length() - 1 -> "${i + 1}.${descriptions[i]}"
                     else -> "${i + 1}.${descriptions[i]}\n\n"
@@ -42,9 +36,6 @@ class Menu(level: String, app: Context) {
                     name = obj.getString("name"), description = text, images = obj.getString("image")
                 )
             )
-
-            _images.add(obj.getString("image"))
-
         }
     }
 
@@ -56,12 +47,5 @@ class Menu(level: String, app: Context) {
         return this.menuEntityList
     }
 
-    fun getDescriptions(): ArrayList<JSONArray>{
-        return this._descriptions
-    }
-
-    fun getImages(): ArrayList<String>{
-        return this._images
-    }
 
 }
