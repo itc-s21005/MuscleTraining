@@ -7,4 +7,7 @@
     <string name="secondButton">中級〜上級</string>
     <string name="Contents">内容</string>
     <string name="managementButton">筋トレ管理</string>
+    <string name="menu_toolbar">MENU</string>
+    <string name="training_toolbar">TRAINING</string>
+    <string name="record_toolbar">RECORD</string>
 </resources>

@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="TRAINING"
+        app:title="@string/training_toolbar"
         app:titleTextColor="@color/white" />
 
     <FrameLayout
